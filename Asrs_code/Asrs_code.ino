@@ -14,7 +14,7 @@
 {'*', '0', '#', 'D'}
 };
 
-
+// Define row and column pins for servo 
 byte rowPins[ROWS] = {5, 4, 3, 2};
 byte colPins[COLS] = {8, 7, 6, 10};
 
