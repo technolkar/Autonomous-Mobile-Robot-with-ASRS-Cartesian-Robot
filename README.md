@@ -27,11 +27,11 @@
 |:---:|:---:|:---:|:---:|
 | 2022 – 2023 | 4 engineers | Team lead · circuit design · hardware build · embedded code | ≈ 500 × 500 × 100 mm |
 
-<!-- 📸 Replace with a real photo of the robot — the single biggest upgrade to this README
 <div align="center">
-  <img src="media/amr-front.jpg" width="70%" alt="The finished AMR"/>
+  <img src="media/amr-three-modules.jpg" width="90%" alt="The three modules side by side: mobile base with fork lifter, ASRS storage tower and Cartesian arm"/>
+  <br/>
+  <sub><i>Left to right: the mobile base with lead-screw fork lifter · the ASRS storage tower · the Cartesian arm with gripper</i></sub>
 </div>
--->
 
 ---
 
@@ -43,7 +43,9 @@
 - [Hardware](#-hardware)
 - [The ASRS module](#-the-asrs-module-in-code)
 - [Mechanical design](#-mechanical-design)
+- [Build journey](#-build-journey)
 - [Testing](#-testing)
+- [The team](#-the-team)
 - [Repository map](#-repository-map)
 - [What I learned](#-what-i-learned)
 - [Roadmap](#-roadmap)
@@ -65,19 +67,19 @@ Small warehouses and workshops still move parts by hand: walk, lift, store, find
 <td width="33%" align="center" valign="top">
 
 ### 🚜 Fork Lifter
-Lifts and carries small pallets and crates between stations.
+Lead-screw driven forks on the mobile base lift and carry small pallets and crates between stations.
 
 </td>
 <td width="33%" align="center" valign="top">
 
 ### 🗄️ ASRS Carousel
-A vertical carousel stores items in trays. Type a tray number on the keypad — it rotates that tray to you.
+A chain-and-sprocket vertical carousel stores items in trays. Type a tray number on the keypad and it brings that tray to the window.
 
 </td>
 <td width="33%" align="center" valign="top">
 
 ### 🦾 Cartesian Arm
-X-Y-Z gantry arm, driven by NEMA 23 steppers, for precise pick-and-place.
+X-Y-Z gantry arm with a gripper, driven by NEMA 23 steppers, for precise pick-and-place.
 
 </td>
 </tr>
@@ -88,6 +90,7 @@ X-Y-Z gantry arm, driven by NEMA 23 steppers, for precise pick-and-place.
 - 🛑 **Obstacle detection** with LIDAR, ultrasonic and IR sensors
 - 📱 **IoT remote control** via the Blynk app: drive, switch tools, monitor live
 - 🔋 **Battery powered**: 12 V Li-ion with regulated supply rails
+- 💡 **LED headlights** for visibility on the shop floor
 
 ---
 
@@ -132,7 +135,7 @@ flowchart LR
 | 👁️ **Sensors** | RPLIDAR · ultrasonic · IR · keypad input |
 | 🏎️ **Drive** | DC geared motors + L298N drivers · front caster wheels |
 | 🦾 **Arm & lift** | 2 × NEMA 23 steppers + TB6600 drivers |
-| 🗄️ **ASRS** | Servo-positioned carousel trays |
+| 🗄️ **ASRS** | Chain-and-sprocket vertical carousel · servo-controlled tray indexing |
 | 🔋 **Power** | 12 V Li-ion battery · SMPS · buck converters (5 V rail) · dual cooling fans |
 | 🖥️ **Feedback** | LCD status display · Blynk dashboard |
 
@@ -170,12 +173,35 @@ The sketch in [`Asrs_code/Asrs_code.ino`](Asrs_code/Asrs_code.ino) runs the stor
 ## 📐 Mechanical design
 
 - 🖥️ Designed in **SolidWorks**, load paths checked in **ANSYS**
-- 🪶 Lightweight **aluminium alloy** chassis
+- 🏗️ Welded **square-tube frames** for the base and the storage tower
+- ⛓️ **Chain-and-sprocket drive** moves the carousel trays vertically
+- 🔩 **Lead screw** raises and lowers the forks on the mobile base
 - 📦 ≈ **500 × 500 × 100 mm** base with bays for electronics, cooling and payload
 - 🛞 Two rear drive wheels for traction, casters at the front for stability
 - 🔩 **Modular**: mechanical and electrical layers separate for easy maintenance
 
 📄 Full drawings and design report: [`Autonomous Mobile Robot system.pdf`](Autonomous%20Mobile%20Robot%20system.pdf)
+
+---
+
+## 🛠️ Build journey
+
+From raw steel tube to a working warehouse robot — every frame was cut, welded and wired by our team.
+
+<table>
+<tr>
+<td width="25%" align="center"><img src="media/amr-fabrication.jpg" alt="Cutting and welding the frame"/><br/><b>① Fabrication</b><br/><sub>Cutting and welding the square-tube frame</sub></td>
+<td width="25%" align="center"><img src="media/amr-carousel-frame.jpg" alt="Carousel frame with sprockets and chains"/><br/><b>② Carousel mechanism</b><br/><sub>Sprockets and chains fitted to the storage tower</sub></td>
+<td width="25%" align="center"><img src="media/amr-lidar-carousel-build.jpg" alt="Base with RPLIDAR and electronics under the carousel"/><br/><b>③ Sensors & electronics</b><br/><sub>RPLIDAR, drivers and controllers on the base</sub></td>
+<td width="25%" align="center"><img src="media/amr-electronics-night.jpg" alt="Mobile base with electronics and LED headlights"/><br/><b>④ Power-up</b><br/><sub>Mobile base wired up, LED headlights on</sub></td>
+</tr>
+</table>
+
+<div align="center">
+  <img src="media/amr-asrs-final.jpg" width="38%" alt="Finished ASRS robot"/>
+  <br/>
+  <b>⑤ Finished robot</b> — ASRS tower mounted on the autonomous mobile base, on display at KLE Tech
+</div>
 
 ---
 
@@ -196,6 +222,22 @@ The sketch in [`Asrs_code/Asrs_code.ino`](Asrs_code/Asrs_code.ino) runs the stor
 
 ---
 
+## 👥 The team
+
+<div align="center">
+  <img src="media/amr-team.jpg" width="85%" alt="The project team with the finished robot"/>
+</div>
+
+| Member | |
+|---|---|
+| **Ajay Mannolkar** | Team lead · circuit design · hardware build · embedded programming |
+| **Yash Dongre** | Team member |
+| **Niraj Kawale** | Team member |
+| **Krishnkant B** | Team member |
+| **Dr. C. V. Adake** | Project guide, KLE College of Engineering & Technology |
+
+---
+
 ## 🗂️ Repository map
 
 ```
@@ -205,6 +247,7 @@ The sketch in [`Asrs_code/Asrs_code.ino`](Asrs_code/Asrs_code.ino) runs the stor
  ┣ 📜 ASRS CODE                        ← earlier version of the ASRS sketch
  ┣ 📕 Autonomous Mobile Robot system.pdf  ← project report + SolidWorks designs
  ┣ 🗜️ BlynkESP8266-master.zip          ← Blynk library used for IoT control
+ ┣ 📂 media                            ← build photos
  ┗ 📘 README.md
 ```
 
@@ -224,7 +267,8 @@ The sketch in [`Asrs_code/Asrs_code.ino`](Asrs_code/Asrs_code.ino) runs the stor
 - [x] Mechanical design, fabrication and assembly
 - [x] Drive, sensing and IoT control
 - [x] ASRS carousel, fork lifter and Cartesian arm
-- [ ] 📸 Add build photos and a demo video
+- [x] 📸 Add build photos
+- [ ] 🎬 Add a demo video
 - [ ] 🗺️ Rebuild the navigation stack on **ROS 2** (Nav2 + SLAM) in **Gazebo** simulation — *in progress, I'm currently learning ROS 2*
 
 ---
