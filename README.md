@@ -23,6 +23,8 @@
 
 > A multipurpose **Autonomous Mobile Robot (AMR)** for industrial material handling. It drives between stations, senses obstacles, and swaps between three tools — a **fork lifter**, a **vertical carousel storage unit (ASRS)** and a **Cartesian robotic arm** — while operators monitor and override it over **IoT**.
 
+> 🔄 **Current status:** the robot runs on **IoT control** (Arduino Mega + ESP8266 / Blynk). We are now working on making it run on **ROS 2** — see the [roadmap](#-roadmap).
+
 | 🔧 Built | 👥 Team | 🧠 My role | 📏 Footprint |
 |:---:|:---:|:---:|:---:|
 | 2022 – 2023 | 4 engineers | Team lead · circuit design · hardware build · embedded code | ≈ 500 × 500 × 100 mm |
@@ -269,7 +271,7 @@ From raw steel tube to a working warehouse robot — every frame was cut, welded
 - [x] ASRS carousel, fork lifter and Cartesian arm
 - [x] 📸 Add build photos
 - [ ] 🎬 Add a demo video
-- [ ] 🗺️ Rebuild the navigation stack on **ROS 2** (Nav2 + SLAM) in **Gazebo** simulation — *in progress, I'm currently learning ROS 2*
+- [ ] 🤖 Make this robot run on **ROS 2**: move the IoT control to ROS 2 nodes and add a Nav2 + SLAM navigation stack, tested first in **Gazebo** — *in progress*
 
 ---
 
